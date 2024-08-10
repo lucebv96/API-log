@@ -1,0 +1,20 @@
+http://localhost:8000/logs
+
+--En Windows
+Activar entorno: .\venv\Scripts\Activate.ps1
+
+
+--CONSULTAS:
+
+1. Consulta de Logs con Filtros por Rango de Fechas del Evento (timestamp)
+"http://localhost:8000/logs?start_date=2024-08-09T00:00:00&end_date=2024-08-10T23:59:59"
+
+2. Consulta de Logs con Filtros por Rango de Fechas de Recepción (received_at)
+"http://localhost:8000/logs?start_received_at=2024-08-09T00:00:00&end_received_at=2024-08-10T23:59:59"
+
+3. Consulta Combinada con Filtros de timestamp y received_at
+"http://localhost:8000/logs?start_date=2024-08-09T00:00:00&end_date=2024-08-10T23:59:59&start_received_at=2024-08-02T00:00:00&end_received_at=2024-08-06T23:59:59"
+
+4.Verifica la API Key Inválida
+"http://localhost:8000/logs" -H "Authorization: 000" -H "Content-Type: application/json" -d '{"timestamp": "2024-08-10T00:00:00Z", "service_name": "ServiceX", "log_level": "ERROR", "message": "Test log"}'
+
